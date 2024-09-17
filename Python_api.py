@@ -1,3 +1,4 @@
+#Created By Chirag And OneKnown
 from flask import Flask, request, jsonify
 from googletrans import Translator
 
