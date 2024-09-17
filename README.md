@@ -42,4 +42,5 @@ Improve translation accuracy through enhanced API configurations.
 Add voice input for translations.
 
 # Screenshots
+(image.png)
 
