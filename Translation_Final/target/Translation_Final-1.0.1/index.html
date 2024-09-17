@@ -1,0 +1,161 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Login Page</title>
+    <style>
+        /* SCSS compiled to CSS */
+        :root {
+            --primary-color: #0d6efd;
+            --dark-bg: #1c1c1c;
+            --light-text: #ffffff;
+            --input-bg: #333;
+            --input-border: #444;
+            --input-focus: #007bff;
+        }
+
+        body {
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+            background-color: var(--dark-bg);
+            color: var(--light-text);
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            height: 100vh;
+            margin: 0;
+            padding: 0;
+        }
+
+        .container {
+            background-color: #282828;
+            padding: 40px;
+            border-radius: 12px;
+            box-shadow: 0 8px 16px rgba(0, 0, 0, 0.5);
+            width: 400px;
+            transform: scale(1);
+            transition: transform 0.3s ease-in-out;
+        }
+
+        .container:hover {
+            transform: scale(1.05);
+        }
+
+        h1 {
+            text-align: center;
+            margin-bottom: 30px;
+            font-size: 2em;
+            color: var(--primary-color);
+        }
+
+        .form-group {
+            margin-bottom: 20px;
+        }
+
+        label {
+            display: block;
+            margin-bottom: 10px;
+            font-weight: bold;
+        }
+
+        input[type="text"],
+        input[type="password"] {
+            width: 90%;
+            padding: 12px;
+            background-color: var(--input-bg);
+            border: 1px solid var(--input-border);
+            border-radius: 8px;
+            color: var(--light-text);
+            font-size: 16px;
+            transition: border-color 0.3s;
+        }
+
+        input[type="text"]:focus,
+        input[type="password"]:focus {
+            border-color: var(--input-focus);
+            outline: none;
+        }
+
+        .button-container {
+            display: flex;
+            justify-content: space-between;
+            margin-top: 20px;
+        }
+
+        button {
+            width: 48%;
+            padding: 12px;
+            background-color: var(--primary-color);
+            border: none;
+            border-radius: 8px;
+            color: var(--light-text);
+            font-size: 18px;
+            cursor: pointer;
+            position: relative;
+            overflow: hidden;
+            transition: background-color 0.3s, transform 0.3s;
+        }
+
+        button:hover {
+            background-color: #0056b3;
+            transform: scale(1.1);
+        }
+
+        /* Star CSS */
+        button::before {
+            content: '';
+            position: absolute;
+            top: -50%;
+            left: -50%;
+            width: 200%;
+            height: 200%;
+            background: radial-gradient(circle, transparent 20%, rgba(255, 255, 255, 0.1) 20%, transparent 80%, transparent);
+            background-size: 20px 20px;
+            opacity: 0.5;
+            animation: animateStars 3s linear infinite;
+        }
+
+        @keyframes animateStars {
+            0% {
+                transform: translateX(0) translateY(0);
+            }
+            100% {
+                transform: translateX(50%) translateY(50%);
+            }
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <h1>Login</h1>
+        <form id="loginForm" action="LoginServlet">
+            <div class="form-group">
+                <label for="username">Username:</label>
+                <input type="text" id="username" name="username" required>
+            </div>
+            <div class="form-group">
+                <label for="password">Password:</label>
+                <input type="password" id="password" name="password" required>
+            </div>
+            <div class="button-container">
+                <button type="submit">Login</button>
+                <button type="button" id="registerButton">Register</button>
+            </div>
+        </form>
+    </div>
+    <script>
+        document.getElementById("registerButton").addEventListener("click", function() {
+            const username = document.getElementById("username").value;
+            const password = document.getElementById("password").value;
+            
+            // Redirect to RegisterServlet with query parameters
+            if (username && password) {
+                window.location.href = `RegisterServlet?username=${encodeURIComponent(username)}&password=${encodeURIComponent(password)}`;
+            } else {
+                alert("Please enter both username and password.");
+            }
+        });
+    </script>
+
+</body>
+</html>
