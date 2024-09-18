@@ -10,6 +10,9 @@ Responsive UI: Designed with SCSS and Bootstrap to create a user-friendly interf
 Session Handling: Stores user preferences using session attributes.
 JSP-Servlet Backend: Implements core Java EE technologies like JSP, Servlets, and session management.
 
+---
+!["UI"](image.png)
+
 # Supported Languages:
 Hindi
 Marathi
